@@ -1,0 +1,43 @@
+.range-cont {
+    position: relative;
+}
+
+.range {
+    width: 100%;
+}
+
+.range-part,
+.range-slider {
+    display: inline-block;
+}
+
+.range-slider {
+    position: relative;
+    cursor: pointer;
+}
+.range-slider--default {
+    width: 10px;
+    height: 20px;
+    background-color: rgb(123, 255, 133);
+}
+.range-slider--default:before {
+    content: "";
+    width: 1px;
+    height: 12px;
+    background-color: rgb(139, 139, 139);
+    position: relative;
+    top: 4px;
+    left: 3px;
+
+    float: left;
+}
+.range-slider--default:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 12px;
+    background-color: rgb(139, 139, 139);
+    position: relative;
+    top: 4px;
+    left: 6px;
+}

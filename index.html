@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Range Delimiter AngularJS directive</title>
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="range-delimiter.css">
+
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="range-delimiter.js"></script>
+</head>
+<body data-ng-app="range-delimiter">
+
+<div class="cont top-margin">
+
+    <range-delimiter
+        data-width="500px"
+        data-parts="{
+            'part 1': {'background': '#888', 'width': '10%', height: '20px'},
+            'part 2': '#555',
+            'part 3': '#888',
+            'part 4': '#555'
+        }"
+        data-ng-model="parts"
+    ></range-delimiter>
+
+</div>
+
+</body>
+</html>
