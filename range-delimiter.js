@@ -90,7 +90,7 @@ app.service("Slider", function() {
     }
 });
 
-app.directive("rangeDelimiter", function($parse, RangePart, Slider) {
+app.directive("rangeDelimiter", function($parse, RangePart, Slider, $timeout) {
     var ranges = [];
     var sliders = [];
 
@@ -116,7 +116,7 @@ app.directive("rangeDelimiter", function($parse, RangePart, Slider) {
                     background = parts[title]['background'];
                     
                     if (parts[title]['width']) {
-                        width = parts[title]['width'];
+                         width = parts[title]['width'];
                     }
 
                     if (parts[title]['height']) {
@@ -158,17 +158,19 @@ app.directive("rangeDelimiter", function($parse, RangePart, Slider) {
                     ngModel.$setViewValue(scope.widths);
                 }
 
-                for (var i = 0; i < ranges.length; i++) {
-                    scope.widths[i] = ranges[i][0].offsetWidth;
+                $timeout(function() {
+                    for (var i = 0; i < ranges.length; i++) {
+                        scope.widths[i] = ranges[i].rect().width;
 
-                    (function(i) {
-                        ranges[i].updateModel = function(width) {
-                            scope.widths[i] = width;
-                            scope.$apply(scope.applyWidths);
-                        }
-                    })(i);
-                };
-                scope.applyWidths();
+                        (function(i) {
+                            ranges[i].updateModel = function(width) {
+                                scope.widths[i] = width;
+                                scope.$apply(scope.applyWidths);
+                            }
+                        })(i);
+                    };
+                    scope.applyWidths();
+                });
             }
         }
     }
