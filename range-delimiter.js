@@ -23,6 +23,10 @@ app.service("RangePart", function() {
             }
         }
 
+        new_elem.getWidth = function() {
+            return this[0].offsetWidth;
+        }
+
         return new_elem;
     }
 });
@@ -37,6 +41,10 @@ app.service("Slider", function() {
 
         slider.addClass("range-slider");
         slider.addClass("range-slider--default");
+
+        slider.rect = function() {
+            return this[0].getBoundingClientRect();
+        }
 
         slider.halfWidth = function() {
             return this[0].offsetWidth * 0.5;
@@ -61,15 +69,19 @@ app.service("Slider", function() {
                 x = right_bound;
             }
 
-            var rect = this.next.rect();
-            this.next.width(rect.right - x - this.halfWidth());
+            var delta = x - slider.old_x;
 
-            var rect = this.prev.rect();
-            this.prev.width(x - rect.left - this.halfWidth());
+            this.next.width(this.next.rect().width - delta);
+
+            this.prev.width(this.prev.rect().width + delta);
+
+            slider.old_x = x;
         }
 
         slider.bind("mousedown", function(e) {
             e.preventDefault();
+
+            slider.old_x = slider.rect().left + slider.halfWidth();
 
             slider.startDrag();
         });
@@ -104,7 +116,7 @@ app.directive("rangeDelimiter", function($parse, RangePart, Slider) {
                     background = parts[title]['background'];
                     
                     if (parts[title]['width']) {
-                         width = parts[title]['width'];
+                        width = parts[title]['width'];
                     }
 
                     if (parts[title]['height']) {

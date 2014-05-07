@@ -12,16 +12,15 @@
 </head>
 <body data-ng-app="range-delimiter">
 
-<div class="cont top-margin">
+<div class="cont top-margin txt-center">
 
     <range-delimiter
-        data-width="500px"
-        data-parts="{
-            'part 1': {'background': '#888', 'width': '10%', height: '20px'},
-            'part 2': '#555',
-            'part 3': '#888',
-            'part 4': '#555'
-        }"
+        data-parts="[
+            {'background': '#888', 'width': '10%', height: '20px'},
+            '#555',
+            '#888',
+            '#555'
+        ]"
         data-ng-model="parts"
     ></range-delimiter>
 

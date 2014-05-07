@@ -18,3 +18,7 @@ body {
 .top-margin {
     margin-top: 2em;
 }
+
+.txt-center {
+    text-align: center;
+}
