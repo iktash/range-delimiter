@@ -10,9 +10,23 @@ body {
     color: #313131;
 }
 
+input {
+    width: 8em;
+    font-size: 0.9em;
+    padding: 0.5em;
+}
+
+hr {
+    border: 1px solid #e2e2e2;
+}
+
 .cont {
     max-width: 1200px;
     margin: auto;
+}
+
+.wide {
+    width: 100%;
 }
 
 .top-margin {
@@ -21,4 +35,49 @@ body {
 
 .txt-center {
     text-align: center;
+}
+.txt-left {
+    text-align: left;
+}
+
+.flex-cont {
+    display: flex;
+}
+.flex-col {
+    flex-direction: column;
+}
+.grow-0 {
+    flex-grow: 0;
+}
+.grow-100 {
+    flex-grow: 1;
+}
+.al-self-center {
+    align-self: center;
+}
+
+.pad-right {
+    padding-right: 0.5em;
+}
+.pad-left {
+    padding-left: 0.5em;
+}
+
+.btn {
+    padding: 0 1em;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.btn--remove {
+    background-color: #eb672a;
+}
+.btn--remove:hover {
+    background-color: #eb2a2a;
+}
+.btn--add {
+    background-color: #2bc0a2;
+    padding: 1em;
+}
+.btn--add:hover {
+    background-color: #03e2b5;
 }

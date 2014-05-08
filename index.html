@@ -9,20 +9,59 @@
 
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="range-delimiter.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </head>
-<body data-ng-app="range-delimiter">
+<body data-ng-app="budget" data-ng-controller="cont">
 
 <div class="cont top-margin txt-center">
 
-    <range-delimiter
-        data-parts="[
-            {'background': '#888', 'width': '10%', height: '20px'},
-            '#555',
-            '#888',
-            '#555'
-        ]"
-        data-ng-model="parts"
-    ></range-delimiter>
+    <h2>Family Budget</h2>
+
+    <div class="top-margin flex-cont">
+        <span class="grow-0 al-self-center pad-right">{{ 0 | currency | cropZeros }}</span>
+
+        <div class="flex-cont grow-100 flex-col">
+            <div class="flex-cont">
+                <span
+                    data-ng-repeat="cat in categories"
+                    data-grow="cat.percents"
+                >
+                    {{ cat.name }}: {{ cat.share | currency | cropZeros }}
+                </span>
+            </div>
+
+            <range-delimiter
+                data-ranges="categories"
+                class="top-margin"
+            ></range-delimiter>
+        </div>
+
+        <span class="grow-0 al-self-center pad-left">{{ total_money | currency | cropZeros }}</span>
+    </div>
+
+    <hr class="top-margin">
+
+    <div class="top-margin txt-left">
+        Total income: <input type="number" data-ng-model="total_money" step="0.1">
+    </div>
+
+    <table class="wide top-margin txt-left">
+        <tr>
+            <th>Name</th>
+            <th>Background</th>
+            <th>Height</th>
+            <th></th>
+        </tr>
+        <tr data-ng-repeat="cat in categories">
+            <td><input type="text" data-ng-model="cat.name" class="wide"></td>
+            <td><input type="text" data-ng-model="cat.background" class="wide"></td>
+            <td><input type="text" data-ng-model="cat.height" class="wide"></td>
+            <td data-ng-click="removeCategory(cat)" class="btn btn--remove txt-center">remove</td>
+        </tr>
+        <tr>
+            <td colspan="4" data-ng-click="addCategory()" class="btn btn--add txt-center">add new one</td>
+        </tr>
+    </table>
 
 </div>
 
