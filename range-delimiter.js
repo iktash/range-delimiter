@@ -118,19 +118,18 @@ app.directive("rangeDelimiter", function(RangePart, Slider, $timeout) {
 
                     var width = (100 - length) / length + "%";
                     var height = "20px";
-                    
-                    if (typeof parts[title] === "string") {
-                        var background = parts[title];
-                    } else {
-                        background = parts[title]['background'];
-                        
-                        if (parts[title]['width']) {
-                            width = parts[title]['width'];
-                        }
+                    var background = "#555";
 
-                        if (parts[title]['height']) {
-                            height = parts[title]['height'];
-                        }
+                    if (parts[title]['background']) {
+                        background = parts[title]['background'];
+                    }
+                        
+                    if (parts[title]['width']) {
+                        width = parts[title]['width'];
+                    }
+
+                    if (parts[title]['height']) {
+                        height = parts[title]['height'];
                     }
 
                     var new_elem = RangePart.create(background, width, height);
