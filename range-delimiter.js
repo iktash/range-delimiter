@@ -34,13 +34,18 @@ app.service("RangePart", function() {
 app.service("Slider", function() {
     var doc = angular.element(document);
 
-    this.create = function(prev_obj) {
+    this.create = function(prev_obj, css_class) {
         var slider = angular.element("<div></div>");
 
         slider.prev = prev_obj;
 
         slider.addClass("range-slider");
-        slider.addClass("range-slider--default");
+        
+        if (css_class) {
+            slider.addClass(css_class);
+        } else {
+            slider.addClass("range-slider--default");
+        }
 
         slider.rect = function() {
             return this[0].getBoundingClientRect();
@@ -132,7 +137,7 @@ app.directive("rangeDelimiter", function($parse, RangePart, Slider, $timeout) {
 
                 if (count < length) {
 
-                    var slider = Slider.create(new_elem);
+                    var slider = Slider.create(new_elem, attrs.sliderClass);
 
                     elem.append(slider);
 
