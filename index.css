@@ -81,3 +81,20 @@ hr {
 .btn--add:hover {
     background-color: #03e2b5;
 }
+
+.header-status {
+    margin-bottom: 2em;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.left {
+    float: left;
+}
